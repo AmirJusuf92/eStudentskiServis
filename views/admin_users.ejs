@@ -1,0 +1,39 @@
+<%- include('partials/navbar') %>
+<div class="users-wrap">
+<div class="users-box">
+<h2>Svi korisnici</h2>
+<input type="text" id="userSearch" onkeyup="filterUsers()" placeholder="Pretraži po imenu ili emailu..">
+<table id="allUsersTable">
+  <tr><th>Ime</th><th>Email</th><th>Uloga</th><th>Akcija</th></tr>
+  <% users.forEach(user => { %>
+    <tr>
+      <td><%= user.first_name %> <%= user.last_name %></td>
+      <td><%= user.email %></td>
+      <td><span class="role-badge <%= user.role %>"><%= user.role %></span></td>
+      <td>
+        <% if (user.role === 'user') { %>
+          <form action="/admin/users/<%= user.id %>/promote" method="POST"
+                onsubmit="return confirm('Unaprijediti korisnika <%= user.email %> u admina?')">
+            <button type="submit" class="btn-promote">Unaprijedi u admina</button>
+          </form>
+        <% } else { %>
+          —
+        <% } %>
+      </td>
+    </tr>
+  <% }) %>
+</table>
+<p style="margin-top:15px;"><a href="/admin_dash">&larr; Nazad na admin dashboard</a></p>
+</div>
+</div>
+<script>
+function filterUsers() {
+  var filter = document.getElementById("userSearch").value.toUpperCase();
+  var rows = document.getElementById("allUsersTable").getElementsByTagName("tr");
+  for (var i = 1; i < rows.length; i++) {
+    var text = rows[i].cells[0].textContent + " " + rows[i].cells[1].textContent;
+    rows[i].style.display = text.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+  }
+}
+</script>
+<%- include('partials/footer') %>

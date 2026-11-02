@@ -1,0 +1,15 @@
+<%- include('partials/navbar') %>
+<div class="jobCont">
+    <div class="job-form">
+<h2>Create Job Post</h2>
+<form method="POST" action="/create-job" enctype="multipart/form-data">
+  <input name="title" placeholder="Naziv posla" required>
+  <textarea name="description" placeholder="opis posla" required></textarea>
+  <input name="location" placeholder="Lokacija">
+  <label for="logo">Logo kompanije (PNG, JPG, WEBP ili GIF, max 2MB)</label>
+  <input type="file" id="logo" name="logo" accept="image/png,image/jpeg,image/webp,image/gif">
+  <button type="submit">Objavi</button>
+</form>
+    </div>
+</div>
+<%- include('partials/footer') %>

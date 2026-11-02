@@ -1,0 +1,31 @@
+<%- include('partials/navbar') %>
+<div class="poso-wrap">
+<div class="poso">
+<h2>Dostupni Poslovi</h2>
+<ul>
+  <% jobs.forEach(job => { %>
+    <li class="job-item">
+      <% if (job.logo_url) { %>
+        <img class="job-logo" src="<%= job.logo_url %>" alt="Logo - <%= job.title %>">
+      <% } else { %>
+        <div class="job-logo job-logo-placeholder"><%= (job.title || '?').charAt(0).toUpperCase() %></div>
+      <% } %>
+      <div class="job-body">
+        <strong><%= job.title %></strong> - <%= job.location %><br>
+        <%= job.description %><br>
+        <div class="job-actions">
+          <a href="/jobs/<%= job.id %>/apply">Apliciraj</a>
+          <% if (typeof isAdmin !== 'undefined' && isAdmin) { %>
+            <form action="/admin/jobs/<%= job.id %>/delete" method="POST"
+                  onsubmit="return confirm('Jesi li siguran da želiš obrisati ovaj oglas?')">
+              <button type="submit" class="btn-delete">Obriši</button>
+            </form>
+          <% } %>
+        </div>
+      </div>
+    </li>
+  <% }); %>
+</ul>
+</div>
+</div>
+<%- include('partials/footer') %>

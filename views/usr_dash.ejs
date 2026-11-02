@@ -1,0 +1,56 @@
+<%- include("partials/navbar") %>
+<div class="usrdasCont">
+<div class="usrdash">
+  <div class="files">
+<h2>Zdravo, <%= user.first_name %>!</h2>
+
+<h3>Tvoje objavljene datoteke</h3>
+<ul>
+  <% files.forEach(file => { %>
+    <li><a href="<%= file.file_url %>" 
+       class="btn btn-sm btn-info" 
+       target="_blank"><%= file.filename %></a></li>
+  <% }) %>
+</ul>
+</div>
+<div class="upload">
+<h3>prenesi datoteku</h3>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+  <input type="file" name="pdf" accept="application/pdf" required><br>
+  <button type="submit">Upload</button>
+</form>
+</div>
+<div class="msgdrop">
+  <button onclick="toggleDropdown()" style="background-color: #f0f0f0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; width: 100%; text-align: left;">
+    <h3 style="margin: 0; display: inline;">Poruke</h3> <span style="float: right;">&#9660;</span>
+  </button>
+  <div id="messagesDropdown" class="messages" style="display: none; margin-top: 10px;">
+<% if (messages.length > 0) { %>
+  <% messages.forEach(msg => { %>
+      <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+          <strong>Poruka za:</strong> <%= msg.user_email %> <br>
+          <strong>Poruka:</strong> <%= msg.message %> <br>
+          <small>poslano: <%= msg.sent_at %></small>
+      </div>
+  <% }); %>
+<% } else { %>
+  <p>Nema novih Poruka.</p>
+<% } %>
+</div>
+</div>
+ </div>
+</div>
+
+<script>
+function toggleDropdown() {
+  const dropdown = document.getElementById('messagesDropdown');
+  dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+}
+</script>
+</div>
+
+<a href="/change_password">Promjeni sifru</a>
+
+</div>
+<%- include("partials/footer") %>
+

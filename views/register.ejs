@@ -1,0 +1,35 @@
+<%- include("partials/navbar") %>
+<div class="tijelo">
+  <div class="cont">
+    <div class="title"><span>Registruj se</span></div>
+<form action="/register" method="POST">
+  <div class="red">
+    <i class="fas fa-user"></i>
+  <input type="email" name="email" placeholder="Email" required><br>
+  </div>
+  <div class="red">
+    <i class="fas fa-user"></i>
+  <input type="text" name="first_name" placeholder="First Name" required><br>
+  </div>
+  <div class="red">
+    <i class="fas fa-user"></i>
+  <input type="text" name="last_name" placeholder="Last Name" required><br>
+  </div>
+  <div class="red">
+    <i class="fas fa-lock"></i>
+  <input type="password" name="password" placeholder="Password" required><br>
+  </div>
+   <div class="red">
+    <i class="fas fa-phone"></i>
+  <input type="number" name="brtel" placeholder="Broj Telefona" required><br>
+  </div>
+  <label>Datum rodjena: </label>
+  <input type="date" name="dob" required><br>
+  <div class="row button">
+    <input type="submit" value="Registruj se" />
+  </div>
+  <div class="signup-link">Imas Profil <a href="/login">prijavi  se</a></div>
+</form>
+  </div>
+</div>
+<%- include("partials/footer") %>

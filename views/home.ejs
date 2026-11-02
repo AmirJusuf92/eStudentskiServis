@@ -1,0 +1,296 @@
+
+<%- include("partials/navbar") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Classic CSS for the new hero section */
+    .new-hero-section {
+      position: relative;
+      height: 100vh;
+      background:url('imgs/StudentskiServisNovi-removebg-preview.jpg')  right  no-repeat; /* Solid dark blue background */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .new-hero-content {
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .new-hero-text {
+      color: #000;
+      text-align: left;
+      max-width: 50%;
+    }
+    .new-hero-text h2 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .new-hero-text p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .new-hero-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    .new-hero-buttons a {
+      background-color: #2563eb;
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    .new-hero-buttons a:hover {
+      background-color: #1d4ed8;
+    }
+    .new-wave-pattern {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .new-subtext {
+      position: relative;
+      z-index: 10;
+      color: #d1d5db;
+      font-size: 0.875rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    @media (max-width: 768px) {
+      .new-hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .new-hero-text {
+        max-width: 100%;
+        margin-bottom: 2rem;
+      }
+      .new-hero-text h2 {
+        font-size: 2rem;
+      }
+      .new-hero-text p {
+        font-size: 1rem;
+      }
+      .new-hero-buttons {
+        justify-content: center;
+      }
+    }
+    .hero-section {
+      position: relative;
+      padding: 64px 0;
+      background-color: rgba(52, 152, 219, 0.7); /* Semi-transparent blue */
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero-section .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-section img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+      opacity: 0.2; /* Slightly more visible for effect */
+      z-index: 0;
+    }
+
+    .hero-section h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-section p {
+      font-size: 1.25rem;
+      margin-bottom: 32px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-section .card-container {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .hero-section a.card {
+      background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+      padding: 24px;
+      border-radius: 8px;
+      max-width: 300px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .hero-section a.card:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
+    }
+
+    .hero-section a.card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .hero-section a.card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .hero-section a.card p {
+      font-size: 1rem;
+      color: #e0e0e0;
+      margin-bottom: 0;
+      text-shadow: none;
+    }
+
+  </style>
+</head>
+<body class="font-sans">
+  <!-- Hero Section -->
+  <section class="relative h-screen bg-cover bg-center" style="background-image: url('imgs/hero1.png')">
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="text-center text-white">
+        <h1 class="text-5xl md:text-7xl font-bold mb-4">Radi, istražuj, osvajaj!</h1>
+        <p class="text-xl md:text-2xl mb-6">Od snova do stvarnosti eStudentskiServis Tvoj put do svijeta</p>
+        <a href="/login" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300">Pridruzi nam se</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards Section -->
+  <section id="cards" class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl">
+          <!-- Card 1 -->
+          <div class="relative bg-white rounded-lg shadow-lg transform -rotate-3 z-10 hover:scale-105 transition duration-300 overflow-hidden">
+            <img src="imgs/bih-718x446.jpg" alt="Innovation" class="w-full h-48 object-cover">
+            <div class="p-6 text-center">
+              <h3 class="text-2xl font-semibold mb-2">Studentski posao u BiH</h3>
+              <p class="text-gray-600 mb-4">Zarađuj, uči i gradi svoju budućnost već danas!</p>
+              <a href="#" class="inline-block bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Saznaj vise</a>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="relative bg-white rounded-lg shadow-lg transform z-20 hover:scale-105 transition duration-300 overflow-hidden">
+            <img src="https://qhwulgnfwrmfxhtmzbmp.supabase.co/storage/v1/object/public/Uploads/uploads/cvgen.png" alt="Connection" class="w-full h-48 object-cover">
+            <div class="p-6 text-center">
+              <h3 class="text-2xl font-semibold mb-2">Izradi Svoj CV</h3>
+              <p class="text-gray-600 mb-4">Brzo i jednostavno izradi svoj CV. I budite spremni za sledeći korak u svojoj karijeri </p>
+              <a href="/posts" class="inline-block bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">saznaj vise</a>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="relative bg-white rounded-lg shadow-lg transform rotate-3 z-10 hover:scale-105 transition duration-300 overflow-hidden">
+            <img src="imgs/WATGER.jpg" alt="Success" class="w-full h-48 object-cover">
+            <div class="p-6 text-center">
+              <h3 class="text-2xl font-semibold mb-2">Sve važne novosti na jednom mjestu</h3>
+              <p class="text-gray-600 mb-4"> Pratite novosti o studentskim poslovima, novim mogućnostima, kao i važne obavijesti vezane za korištenje našeg servisa. </p>
+              <a href="/posts" class="inline-block bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">saznaj vise</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Previous Section with Links -->
+ <section class="hero-section">
+    <div class="container">
+      
+      <h2>eStudentskiServis te vodi na put oko svijeta</h2>
+      <p>Ne propusti priliku, prijavi se i putuj sa nama</p>
+      <div class="card-container">
+        <a href="#" class="card">
+          <div class="icon">🖥️</div>
+          <h3>Dostupni na tvom dlanu</h3>
+          <p>Prijavi se, i postani dio nezaboravne price.</p>
+        </a>
+        <a href="#" class="card">
+          <div class="icon">🏠</div>
+          <h3>Posao kod kuće</h3>
+          <p>Zelis ostati kuci, nudimo ti priliku za radu u tvom gradu</p>
+        </a>
+        <a href="#" class="card">
+          <div class="icon">🌍</div>
+          <h3>Work & Travel</h3>
+          <p>Putuj sa nama, staci nova iskustva, upoznaj nove ljude, zaradi !!</p>
+        </a>
+        <a href="#" class="card">
+          <div class="icon">✅</div>
+          <h3>Podrška</h3>
+          <p>Tu smo uvijek da odgovorimo na sva Tvoja pitanja o nama i svakom od nasih programa</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Updated Section Styled Like Hero -->
+  <section class="relative h-screen bg-fit bg-center bg-no-repeat" style="background-image: url('imgs/olatforme.png')">
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="container mx-auto px-4 flex flex-col md:flex-row items-center text-center md:text-left">
+        <!-- Text Content -->
+        <div class="w-full md:w-1/2 mb-8 md:mb-0 text-white">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">Nikada lakše do Work & Travel programa.</h2>
+          <div class="flex items-center justify-center md:justify-start">
+            <span class="text-2xl mr-2">□</span>
+            <p class="text-lg md:text-xl">Dostupni online na svim platformama.</p>
+          </div>
+        </div>
+        <!-- Device Mockup -->
+        <div class="w-full md:w-1/2">
+          <img src="imgs/StudentskiServisNovi-removebg-preview.png" alt="Device Mockup" class="w-full max-w-lg mx-auto">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Hero Section with Text on Right -->
+  <section class="new-hero-section">
+    <div class="new-hero-content">
+      <div class="new-hero-text">
+        <h2>Sve što te zanima o Work & Travel.</h2>
+        <p>Za sva Tvoja pitanja o programu tu je naš iskusni tim u prethodnom prevoz ručem Tvoja sreća odgovore i upute da ti postaneš dio ove price</p>
+        <div class="new-hero-buttons">
+          <a href="/login">PRIJAVI SE</a>
+          <a href="/onama">Saznaj vise</a>
+        </div>
+      </div>
+    </div>
+      
+    <div class="new-subtext">
+      
+    </div>
+  </section>
+  
+</body>
+</html>
+
+
+<%- include("partials/footer") %>

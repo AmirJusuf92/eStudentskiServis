@@ -1,0 +1,40 @@
+<%- include("partials/navbar") %>
+<div class="applications-wrap">
+    <div class="applications">
+<h2>Aplikacije za posao</h2>
+
+      <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="pretrazi po imenu ili nazivu posla...">
+<table id="applicationsTable"><thead><th>Ime i Prezime</th><th>email</th><th>aplikacija na posao</th><th>vrijeme apliciranja</th></thead>
+  <% applications.forEach(app => { %>
+    <tbody><tr>
+      <td><%= app.full_name %></td><td><%= app.email %></td><td><%= app.title %></td><td><%= app.applied_at %></td> 
+    </tr></tbody>
+  <% }); %>
+</table>
+    </div></div>
+<script>
+    function searchTable() {
+      
+      var input, filter, table, tr, tdName, tdTitle, i, txtValueName, txtValueTitle;
+      input = document.getElementById("searchInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("applicationsTable");
+      tr = table.getElementsByTagName("tr");
+
+      
+      for (i = 1; i < tr.length; i++) {
+        tdName = tr[i].getElementsByTagName("td")[0]; 
+        tdTitle = tr[i].getElementsByTagName("td")[2]; 
+        if (tdName || tdTitle) {
+          txtValueName = tdName.textContent || tdName.innerText;
+          txtValueTitle = tdTitle.textContent || tdTitle.innerText;
+          if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueTitle.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
+  <%- include("partials/footer") %>

@@ -1,0 +1,83 @@
+<%- include("partials/navbar") %>
+<div class="admin">
+<h2>Admin Dashboard</h2>
+<div class="adminCont">
+
+<div class="korsnici">
+<h3>Svi Korisnici</h3>
+<input type="text" id="Input" onkeyup="myFunction()" placeholder="Search for names..">
+<table id="userTable">
+  <th>Ime</th><th>Email</th>
+  <% users.forEach(user => { %>
+    <tr>
+      <td><%= user.first_name %> <%= user.last_name %></td>
+      <td><%= user.email %></td>
+      
+    </tr>
+  <% }) %>
+</table>
+</div>
+<div class="failes">
+<h3>Objavljene datoteke</h3>
+
+<table id="fileTable"><th>Ime</th><th>Fajl</th>
+  <% files.forEach(file => { %>
+    <tr>
+    <td><%= file.first_name %> <%= file.last_name %></td> <td><a href="<%= file.file_url %>" 
+       class="btn btn-sm btn-info" 
+       target="_blank"><%= file.filename %></a></td>
+  </tr><% }) %>
+</table>
+</div>
+<div class="poruke">
+<h3>Posalji poruku korisnicima</h3>
+<form action="/message" method="POST">
+    <label>Odaberi korisnika:</label>
+    <select name="user_id" required>
+        <% users.forEach(user => { %>
+            <option value="<%= user.id %>"><%= user.email %></option>
+        <% }) %>
+    </select>
+    <br>
+
+    <label>Poruka:</label><br>
+    <textarea name="message" required></textarea>
+    
+    <br>
+    <button type="submit">Posalji</button>
+</form>
+</div>
+
+<div class="funkcije">
+<a href="/admin_messages">Pogledaj sve poruke</a>
+<a href="/create-job">Kreiraj novi oglas</a>
+<a href="/admin/users">Upravljanje korisnicima</a>
+<a href="/aplication">Aplikacije za posao</a>
+</div></div></div>
+<script>
+function myFunction() {
+  
+  var input, filter, tables, tr, td, i, j, txtValue;
+  input = document.getElementById("Input");
+  filter = input.value.toUpperCase();
+  tables = [    document.getElementById("userTable"),    document.getElementById("fileTable")  ];
+
+  
+  for (j = 0; j < tables.length; j++) {
+    tr = tables[j].getElementsByTagName("tr");
+    
+    for (i = 1; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+}
+</script>
+<%- include("partials/footer") %>
